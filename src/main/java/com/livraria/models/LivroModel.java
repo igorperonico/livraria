@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -24,5 +25,5 @@ public class LivroModel implements Serializable {
 
     private String titulo;
     private String autor;
-    private Double preco;
+    private BigDecimal preco;
 }
