@@ -1,6 +1,7 @@
 package com.livraria.controllers;
 
 import com.livraria.dtos.LivroRecordDto;
+import com.livraria.models.GeneroLivro;
 import com.livraria.models.LivroModel;
 import com.livraria.repositories.LivroRepository;
 import jakarta.validation.Valid;
@@ -36,6 +37,16 @@ public class LivroController {
         }
     }
 
+    @GetMapping("/genero/{genero}")
+    public ResponseEntity<List<LivroModel>> getLivrosByGenero(@PathVariable("genero") GeneroLivro genero) {
+        List<LivroModel> livros = livroRepository.findByGenero(genero);
+        if (livros.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(livros);
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(livros);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<LivroModel> addLivro(@RequestBody @Valid LivroRecordDto livroRecordDto) {
         LivroModel livroModel = new LivroModel();
@@ -68,8 +79,5 @@ public class LivroController {
             return ResponseEntity.status(HttpStatus.OK).body("Livro excluido com sucesso!");
         }
     }
-
-
-
 
 }
