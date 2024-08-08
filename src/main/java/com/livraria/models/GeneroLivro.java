@@ -1,6 +1,6 @@
 package com.livraria.models;
 
-public enum LivroGeneros {
+public enum GeneroLivro {
     FICCAO,
     NAO_FICCAO,
     ROMANCE,
