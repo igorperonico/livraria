@@ -26,4 +26,7 @@ public class LivroModel implements Serializable {
     private String titulo;
     private String autor;
     private BigDecimal preco;
+    @Enumerated(EnumType.STRING)
+    private GeneroLivro genero;
+
 }
